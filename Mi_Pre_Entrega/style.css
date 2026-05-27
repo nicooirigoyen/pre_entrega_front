@@ -1,0 +1,202 @@
+/* ==========================================================================
+   1. REGLAS GLOBALES Y RESETEO (Box-sizing para evitar desbordes)
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.body {
+    width: 100%;
+}
+
+/* ==========================================================================
+   2. HEADER & NAVEGACIÓN (Distribución horizontal con Flexbox)
+   ========================================================================== */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 80px;
+    background-color: #c3d2d5;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    position: sticky; /* Mantiene la barra fija arriba al hacer scroll */
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.navsup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+}
+
+.navsup li {
+    list-style: none;
+    padding: 0 20px;
+}
+
+/* ==========================================================================
+   3. SECCIÓN HERO (Banner de bienvenida con texto en columna)
+   ========================================================================== */
+.hero {
+    background-image: url('img/mate_cordillera.jpg');
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column; /* Alinea los textos verticalmente dentro del Hero */
+    padding-top: 50px;
+    padding-left: 40px;
+    height: 75vh;
+    width: 100%;
+    background-size: cover;
+    background-position: top 5% center;
+}
+
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 3.5rem;
+    color: #ffffff; 
+    line-height: 1.1;
+    text-shadow: 8px 8px 8px rgba(0, 0, 0, 0.5); 
+}
+
+.hero h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: #0d0c0c;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 50px;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Adaptación Responsive del Hero --- */
+@media (max-width: 1200px) {
+    .hero { padding: 20px 60px; }
+    .hero .h3 { font-size: 1.2rem; }
+}
+
+@media (max-width: 992px) {
+    .hero { height: 85vh; padding: 20px 60px; }
+    .hero h1 { font-size: 3rem; }
+    .hero h3 { font-size: 1rem; }
+}
+
+/* ==========================================================================
+   4. SECCIÓN PRODUCTOS (Grilla responsive con Flex-wrap y limitadores)
+   ========================================================================== */
+.section-products .all_products {
+    display: flex;
+    flex-wrap: wrap;       /* Permite que las tarjetas bajen si no entran */
+    justify-content: center; /* Centra los termos en la pantalla */
+    gap: 30px;              /* Separación homogénea entre productos */
+    padding: 40px 20px;
+    background-color: #ffffff;
+}
+
+/* Tarjeta de Producto Individual */
+.section-products .product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* Distribuye uniformemente textos, imagen y botón */
+    padding: 1.5rem 1rem;
+    background-color: #ffffff;
+    flex: 1 1 280px;  /* Flex-grow, Flex-shrink y base ideal de 280px */
+    max-width: 320px; /* Evita que las tarjetas se hagan gigantes en resoluciones altas */
+} 
+
+.section-products .product img {
+    width: 100%;
+    height: 280px;       /* Controla el alto uniforme de las imágenes */
+    border-radius: 10px;
+    border: #5a2f07 solid 1.5px;
+    box-shadow: #9e6d0c 1.5px 1.5px 4.5px;  
+    object-fit: contain; /* Ajusta la imagen dentro de los límites sin deformarse */
+    display: block;
+}
+
+.section-products .all_products .product h5 {
+    margin-top: 2rem;
+    padding-bottom: 0.5rem;
+}
+
+.section-products .all_products .product p {
+    text-align: center;
+    padding: 0.5rem 2rem;
+    padding-top: 1rem;
+    font-family: 'Times New Roman', Times, serif;
+    flex-grow: 1; /* Estira el texto para alinear los precios de abajo en una misma línea */
+    min-height: 100px;
+}
+
+.section-products .all_products .product h4 {
+    padding: 1rem 0;
+}
+
+/* --- Adaptación Responsive del Catálogo --- */
+@media (max-width: 1200px) {
+    .section-products .all_products { justify-content: space-around; }
+    .section-products .all_products .product { margin: 15px 10px; }
+}
+
+@media (max-width: 992px) {
+    .section-products h5 { font-size: 0.8rem; }
+    .section-products .all_products .product p { font-size: 0.9rem; }
+    .section-products .all_products .product { width: 20%; }
+    .section-products .all_products .product img { min-width: 200px; min-height: 200px; }
+}
+
+/* ==========================================================================
+   5. SECCIÓN DESCRIPCIÓN INSTITUCIONAL
+   ========================================================================== */
+.description {
+    color: #ffffff;
+    padding: 2rem 4rem;
+    background-color: #7f530e;
+    margin-top: 3rem;
+    border-radius: 10px;
+    text-shadow: #0d0c0c 1.5px 1.5px 1.5px;
+}
+
+.description h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    margin-bottom: 4rem;
+}
+
+/* --- Adaptación Responsive de la Descripción --- */
+@media (max-width: 1200px) {
+    .description { padding: 20px 60px; }
+    .description h2 { font-size: 28px; }
+    .description p { font-size: 16px; }
+}
+
+@media (max-width: 992px) {
+    .description { height: 35vh;}
+    .description h2 { font-size: 26px;}
+    .description p { font-size: 14px; }
+}
+
+/* ==========================================================================
+   6. FOOTER (Derechos de Autor)
+   ========================================================================== */
+.copyright {
+    font-size: 0.6rem;
+    text-align: left;
+    padding: 0rem 1rem;
+    margin-top: 5rem;
+}
